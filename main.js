@@ -415,6 +415,105 @@ const logger = pino({
 global.jidCache = new NodeCache({ stdTTL: 600, useClones: false, maxKeys: 1000 })
 global.lidCache = new NodeCache({ stdTTL: 86400, useClones: false, maxKeys: 5000 })
 
+const GHOST_REFRESH_INTERVAL = 10 * 60 * 1000
+const groupVisibilityCache = new Map()
+
+function getVisibilityJidCandidates(conn, participants = []) {
+  const ghostJids = new Set()
+  const add = jid => {
+    if (typeof jid === 'string' && jid) ghostJids.add(jid)
+  }
+
+  for (const participant of participants) {
+    add(participant?.id)
+    add(participant?.jid)
+    add(participant?.lid)
+    add(participant?.phoneNumber)
+    add(participant?.pn)
+    add(participant?.participantPn)
+  }
+
+  add(conn?.user?.id)
+  add(conn?.user?.jid)
+  add(conn?.authState?.creds?.me?.lid)
+
+  for (const owner of safeOwnerList()) {
+    const number = Array.isArray(owner) ? owner[0] : owner
+    if (typeof number === 'string' && number) add(`${number.replace(/\D/g, '')}@s.whatsapp.net`)
+  }
+
+  return [...ghostJids]
+}
+
+function safeOwnerList() {
+  return Array.isArray(global.owner) ? global.owner : []
+}
+
+function clearOwnGroupSenderKeys(conn, groupId) {
+  const keys = conn?.authState?.keys
+  const me = conn?.user?.id
+  if (!keys?.set || !groupId || !me) return Promise.resolve()
+
+  const keysToClear = {}
+  for (const identity of [me, conn?.authState?.creds?.me?.lid]) {
+    if (!identity) continue
+    const user = identity.split(':')[0].split('@')[0]
+    const device = identity.split(':')[1]?.split('@')[0] || 0
+    keysToClear[`${groupId}::${user}::${device}`] = null
+  }
+
+  return keys.set({
+    'sender-key': keysToClear,
+    'sender-key-memory': { [groupId]: null }
+  })
+}
+
+async function refreshGroupVisibility(conn, groupId, force = false) {
+  if (!conn || !groupId?.endsWith('@g.us')) return []
+
+  const cached = groupVisibilityCache.get(groupId)
+  if (!force && cached && Date.now() - cached.updatedAt < GHOST_REFRESH_INTERVAL) return cached.ghostJids
+
+  const metadata = await conn.groupMetadata(groupId).catch(() => null)
+  const ghostJids = getVisibilityJidCandidates(conn, metadata?.participants || [])
+  groupVisibilityCache.set(groupId, { ghostJids, updatedAt: Date.now() })
+  await clearOwnGroupSenderKeys(conn, groupId).catch(() => {})
+  return ghostJids
+}
+
+function installGroupVisibilityProtection(conn) {
+  if (!conn?.sendMessage || conn.sendMessage.__groupVisibilityProtected) return
+
+  groupVisibilityCache.clear()
+  const originalSendMessage = conn.sendMessage.bind(conn)
+  const protectedSendMessage = async (jid, content, options = {}) => {
+    if (!jid?.endsWith?.('@g.us')) return originalSendMessage(jid, content, options)
+    const ghostJids = await refreshGroupVisibility(conn, jid)
+    return originalSendMessage(jid, content, { ...options, ghostJids })
+  }
+
+  protectedSendMessage.__groupVisibilityProtected = true
+  conn.sendMessage = protectedSendMessage
+
+  conn.ev.on('messages.upsert', ({ messages }) => {
+    refreshVisibilityForEvent(conn, messages?.map(message => message?.key?.remoteJid) || [])
+  })
+  conn.ev.on('group-participants.update', update => {
+    refreshVisibilityForEvent(conn, [update?.id])
+  })
+  conn.ev.on('groups.update', updates => {
+    refreshVisibilityForEvent(conn, updates?.map(update => update?.id) || [])
+  })
+}
+
+function refreshVisibilityForEvent(conn, groupIds = []) {
+  for (const groupId of groupIds) refreshGroupVisibility(conn, groupId, true).catch(() => {})
+}
+
+setInterval(() => {
+  refreshVisibilityForEvent(global.conn, [...groupVisibilityCache.keys()])
+}, GHOST_REFRESH_INTERVAL)
+
 const originalLidCacheSet = global.lidCache.set.bind(global.lidCache)
 global.lidCache.set = (lid, pn, ttl) => {
   if (!lid || !pn) return false
@@ -497,6 +596,7 @@ const connectionOptions = {
 
 global.conn = makeWASocket(connectionOptions)
 global.store.bind(global.conn)
+installGroupVisibilityProtection(global.conn)
 
 ;['messages.upsert', 'messages.update', 'chats.upsert', 'contacts.upsert'].forEach(evt => {
   global.conn.ev.on(evt, data => connectionManager.subsystems.eventBus.emit(evt, data))
@@ -713,6 +813,7 @@ global.reloadHandler = async function (restatConn) {
     conn.ev.removeAllListeners()
     global.conn = makeWASocket(connectionOptions, { chats: oldChats })
     global.store.bind(global.conn)
+    installGroupVisibilityProtection(global.conn)
 
     ;['messages.upsert', 'messages.update', 'chats.upsert', 'contacts.upsert'].forEach(evt => {
       global.conn.ev.on(evt, data => connectionManager.subsystems.eventBus.emit(evt, data))
