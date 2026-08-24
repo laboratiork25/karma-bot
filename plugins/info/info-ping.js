@@ -47,10 +47,9 @@ let handler = async (m, { conn }) => {
 │ Nome: ${nomeDelBot}
 │ Ping: ${ping} ms
 │ Uptime: ${clockString(uptime)}
-│ CPU: ${cpuModel}
 │ Speed: ${cpuSpeed} MHz
 │ RAM: ${format(totalmem() - freemem())} / ${format(totalmem())}
-╰─────────────────────`
+╰───────────`
 
     await conn.sendMessage(m.chat, { text: caption }, { quoted: m })
 }

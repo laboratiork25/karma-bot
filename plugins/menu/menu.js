@@ -26,16 +26,16 @@ const handler = async (message, { conn, usedPrefix }) => {
             caption: menuText,
             footer: footerText,
             buttons: [
-                { buttonId: `${usedPrefix}menufunzioni`, buttonText: { displayText: ' ✨  𝐹𝓊𝓃𝓏𝒾𝑜𝓃𝒾' }, type: 1 },
-                { buttonId: `${usedPrefix}menugruppo`, buttonText: { displayText: ' 👥  𝒢𝓇𝓊𝓅𝓅𝑜' }, type: 1 },
-                { buttonId: `${usedPrefix}menuadmin`, buttonText: { displayText: ' 🛡️  𝒜𝒹𝓂𝒾𝓃/𝑀𝑜𝒹' }, type: 1 },
-                { buttonId: `${usedPrefix}menuowner`, buttonText: { displayText: ' 👑  𝒪𝓌𝓃𝑒𝓇' }, type: 1 }
+                { buttonId: `${usedPrefix}menufunzioni`, buttonText: { displayText: ' ✨  Funzioni' }, type: 1 },
+                { buttonId: `${usedPrefix}menugruppo`, buttonText: { displayText: ' 👥  Gruppo' }, type: 1 },
+                { buttonId: `${usedPrefix}menuadmin`, buttonText: { displayText: ' 🛡️  Admin/Mod' }, type: 1 },
+                { buttonId: `${usedPrefix}menuowner`, buttonText: { displayText: ' 👑  Owner' }, type: 1 }
             ],
             viewOnce: true,
             headerType: 4
         }, { quoted: message })
     } catch (e) {
-        console.error('𝐸𝓇𝓇𝑜𝓇𝑒 𝒾𝓃𝓋𝒾𝑜 𝓂𝑒𝓃𝓊:', e.message)
+        console.error('Errore invio menu:', e.message)
         await message.reply(menuText)
     }
 }
@@ -47,7 +47,7 @@ handler.command = /^(menu|menup|home|start)$/i
 export default handler
 
 function generateMenuText(prefix, userId, groupId, uptime) {
-    const botName = global.db.data.nomedelbot || '₭𐌀Ɽ₥𐌀-𐌱𐍉𐍄'
+    const botName = global.db.data.nomedelbot || 'Karma-bot'
 
     const createSection = (title, commands) => {
         const commandLines = commands.trim().split('\n').map(c => `│❍ ${c.trim()}`).join('\n')
@@ -57,7 +57,7 @@ ${commandLines}
     }
 
     const sections = [
-        createSection(' ⚡  𝒜𝒸𝒸𝑒𝓈𝓈𝑜 𝓇𝒶𝓅𝒾𝒹𝑜', `
+        createSection(' ⚡  Accesso rapido', `
 💤 *${prefix}afk*
 🚀 *${prefix}ping*
 🤖 *${prefix}ia*
@@ -70,7 +70,7 @@ ${commandLines}
     ]
 
     return `·˚*୨୧꒰*˚· *${botName}* ·˚*꒱୨୧*˚·
-𖤓 *𝒯𝑒𝓂𝓅𝑜 𝒶𝓉𝓉𝒾𝓋𝑜:* ${clockString(uptime)}
+𖤓 *Tempo attivo:* ${clockString(uptime)}
 
 ${sections.join('\n\n')}`.trim()
 }
