@@ -19,7 +19,7 @@ global.wait = 'ⓘ 𝐂𝐚𝐫𝐢𝐜𝐚𝐦𝐞𝐧𝐭𝐨 ...';
 
 
 global.owner = [
-  ['393455383267', 'Karma', true],
+  ['393455383567', 'Karma', true],
   ['9779828891521', 'gnegne', true], //re dei larp
   ['xxxxxxxxxx']
 ];
