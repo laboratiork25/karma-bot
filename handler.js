@@ -873,8 +873,8 @@ async function processMessage(m, chatUpdate, stats, activePlugins, systems) {
       if (m.chat in global.db.data.chats || m.sender in global.db.data.users) {
         let chat = global.db.data.chats[m.chat]
         let userDb = global.db.data.users[m.sender]
-        if (name !== 'owner-ban&unbanchat.js' && chat?.isBanned) return
-        if (name !== 'owner-ban&unbanuser.js' && userDb?.banned) return
+        if (name !== 'owner-banchat&unbanchat.js' && chat?.isBanned) return
+        if (name !== 'owner-unbanuser.js' && userDb?.banned) return
       }
 
       let chatDb = global.db.data.chats[m.chat]
