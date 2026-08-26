@@ -1,19 +1,28 @@
- 
 let handler = async (m, { conn, command }) => {
     const userId = m.sender;
     const groupId = m.chat;
     const nomeDelBot = conn.user?.name || global.db?.data?.nomedelbot || '₭𐌀Ɽ₥𐌀-𐌱𐍉𐍄';
-    
-    const isBan = /^(banchat|bangp|banearchat|bloquearchat|bloqueargrupo|banirchat|chatblock|chatban|chatgesperrt|禁用聊天|забанитьчат|حظرالمحادثة|चैटबैन)$/i.test(command);
-    
+
+    // Comandi ban e unban (solo italiano e inglese)
+    const banCommands = /^(banchat|bangp|banirchat|chatban|chatblock|chatgesperrt|禁用聊天|забанитьчат|حظرالمحادثة|चैटबैन)$/i;
+    const unbanCommands = /^(unbanchat|unbangp|desbanirchat|chatunban|chatunblock|chatfreigeben|启用聊天|разбанитьчат|رفعالحظر|चैटअनबैन)$/i;
+
+    const isBan = banCommands.test(command);
+    const isUnban = unbanCommands.test(command);
+
+    if (!isBan && !isUnban) {
+        return; // comando non riconosciuto
+    }
+
     if (!global.db.data.chats[m.chat]) {
         global.db.data.chats[m.chat] = {};
     }
-    
+
+    // Imposta correttamente lo stato
     global.db.data.chats[m.chat].isBanned = isBan;
-    
+
     const messageKey = isBan ? 'banChatSuccess' : 'unbanChatSuccess';
-    
+
     await conn.sendMessage(m.chat, {
         text: global.t(messageKey, userId, groupId),
         contextInfo: {
@@ -29,39 +38,25 @@ let handler = async (m, { conn, command }) => {
 };
 
 handler.help = [
-  'banchat',
-  'unbanchat',
-  'bangp',
-  'unbangp',
-  'banearchat',
-  'desbanearchat',
-  'bloquearchat',
-  'desbloquearchat',
-  'banirchat',
-  'desbanirchat',
-  'chatblock',
-  'chatunblock',
-  'chatban',
-  'chatunban',
-  'chatgesperrt',
-  'chatfreigeben',
-  '禁用聊天',
-  '启用聊天',
-  'забанитьчат',
-  'разбанитьчат',
-  'حظرالمحادثة',
-  'رفعالحظر',
-  'चैटबैन',
-  'चैटअनबैन',
-  'banchat_fr',
-  'unbanchat_fr',
-  'banir_id',
-  'unbanir_id',
-  'chatban_tr',
-  'chatunban_tr'
+    'banchat',
+    'unbanchat',
+    'bangp',
+    'unbangp',
+    'banirchat',
+    'desbanirchat',
+    'chatban',
+    'chatunban',
+    'chatblock',
+    'chatunblock',
+    'chatgesperrt',
+    'chatfreigeben'
 ];
+
 handler.tags = ['owner'];
-handler.command = /^(banchat|bangp|unbanchat|unbangp|banearchat|desbanearchat|bloquearchat|desbloquearchat|banirchat|desbanirchat|chatblock|chatunblock|chatban|chatunban|chatgesperrt|chatfreigeben|禁用聊天|启用聊天|забанитьчат|разбанитьчат|حظرالمحادثة|رفعالحظر|चैटबैन|चैटअनबैन|banchat_fr|unbanchat_fr|banir_id|unbanir_id|chatban_tr|chatunban_tr)$/i;
+
+// Solo italiano e inglese nei comandi riconosciuti
+handler.command = /^(banchat|unbanchat|bangp|unbangp|banirchat|desbanirchat|chatban|chatunban|chatblock|chatunblock|chatgesperrt|chatfreigeben)$/i;
+
 handler.rowner = true;
 
 export default handler;
