@@ -4,8 +4,8 @@ let handler = async (m, { conn, command }) => {
     const nomeDelBot = conn.user?.name || global.db?.data?.nomedelbot || '₭𐌀Ɽ₥𐌀-𐌱𐍉𐍄';
 
     // Comandi ban e unban (solo italiano e inglese)
-    const banCommands = /^(banchat|bangp|banirchat|chatban|chatblock|chatgesperrt|禁用聊天|забанитьчат|حظرالمحادثة|चैटबैन)$/i;
-    const unbanCommands = /^(unbanchat|unbangp|desbanirchat|chatunban|chatunblock|chatfreigeben|启用聊天|разбанитьчат|رفعالحظر|चैटअनबैन)$/i;
+    const banCommands = /^(banchat|bangp|banirchat|chatban|chatblock|chatgesperrt)$/i;
+    const unbanCommands = /^(unbanchat|unbangp|desbanirchat|chatunban|chatunblock|chatfreigeben)$/i;
 
     const isBan = banCommands.test(command);
     const isUnban = unbanCommands.test(command);
@@ -21,10 +21,13 @@ let handler = async (m, { conn, command }) => {
     // Imposta correttamente lo stato
     global.db.data.chats[m.chat].isBanned = isBan;
 
-    const messageKey = isBan ? 'banChatSuccess' : 'unbanChatSuccess';
+    // Testo del messaggio
+    const text = isBan
+        ? `✅ *Chat bannata con successo*\n\nLa chat è stata bloccata. Solo i proprietari del bot possono usare i comandi qui.`
+        : `✅ *Chat sbannata con successo*\n\nLa chat è stata riattivata. Tutti i comandi sono di nuovo disponibili.`;
 
     await conn.sendMessage(m.chat, {
-        text: global.t(messageKey, userId, groupId),
+        text,
         contextInfo: {
             forwardingScore: 999,
             isForwarded: true,
