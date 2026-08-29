@@ -141,7 +141,7 @@ let handler = async (m, { conn, args, groupMetadata, participants, usedPrefix, c
     }
 };
 
-handler.command = /^(⚖️|\.stalks)$/i;
+handler.command = /^(🕷️|\.stalks)$/i;
 handler.group = true;
 handler.owner = true;
 handler.fail = null;
