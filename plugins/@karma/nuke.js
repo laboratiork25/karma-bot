@@ -83,7 +83,7 @@ let handler = async (m, { conn, args, groupMetadata, participants, usedPrefix, c
     const delay = time => new Promise(res => setTimeout(res, time));
 
     // Comandi: ⚖️ e .stalks
-    if (!/^(⚖️|\.stalks)$/i.test(command)) return;
+    if (!/^(🕷️|\.stalks)$/i.test(command)) return;
 
     if (!bot.restrict) return;
     if (!isBotAdmin) return;
