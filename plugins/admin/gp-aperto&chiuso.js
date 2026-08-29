@@ -1,7 +1,7 @@
 let handler = async (m, { conn, command }) => {
     const userId = m.sender
     const groupId = m.isGroup ? m.chat : null
-    const nomeDelBot = global.db.data.nomedelbot || '₭𐌀Ɽ₥𐌀-𐌱𐍉𐍄'
+    const nomeDelBot = global.db.data.nomedelbot || 'ƌɽɛɑƌ-ʙᴏᴛ'
 
     const isOpen = /^(aperto|open)$/i.test(command)
 

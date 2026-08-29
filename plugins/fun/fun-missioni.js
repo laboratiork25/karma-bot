@@ -3,7 +3,7 @@
 const handler = async (m, { conn, usedPrefix, command, args }) => {
     const userId = m.sender;
     const groupId = m.chat;
-    const nomeDelBot = global.db.data.nomedelbot || '₭𐌀Ɽ₥𐌀-𐌱𐍉𐍄 Bot';
+    const nomeDelBot = global.db.data.nomedelbot || 'ƌɽɛɑƌ-ʙᴏᴛ Bot';
     const image = fs.existsSync('./chatunity.png') ? fs.readFileSync('./chatunity.png') : null;
 
     // Inizializzazione robusta del database

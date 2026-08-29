@@ -47,7 +47,7 @@ handler.command = /^(menufunzioni|funzioni|menuall)$/i
 export default handler
 
 function generateMenuText(prefix, userId, groupId, uptime) {
-    const botName = global.db.data.nomedelbot || '₭𐌀Ɽ₥𐌀-𐌱𐍉𐍄'
+    const botName = global.db.data.nomedelbot || 'ƌɽɛɑƌ-ʙᴏᴛ'
 
     const createSection = (title, commands) => {
         const commandLines = commands.trim().split('\n').map(c => `│❍ ${c.trim()}`).join('\n')

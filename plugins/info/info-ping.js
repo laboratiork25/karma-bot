@@ -10,7 +10,7 @@ const format = sizeFormatter({
 })
 
 let handler = async (m, { conn }) => {
-    const nomeDelBot = global.db.data.nomedelbot || '₭𐌀Ɽ₥𐌀'
+    const nomeDelBot = global.db.data.nomedelbot || 'ƌɽɛɑƌ-ʙᴏᴛ'
 
     const start = performance.now()
     await new Promise(resolve => setTimeout(resolve, 1))

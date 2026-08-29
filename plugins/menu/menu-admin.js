@@ -43,7 +43,7 @@ export default handler
 
 function generateMenuText(prefix, userId, groupId, uptime) {
   const vs = global.vs || '8.0'
-  const botName = global.db.data.nomedelbot || '₭𐌀Ɽ₥𐌀-𐌱𐍉𐍄'
+  const botName = global.db.data.nomedelbot || 'ƌɽɛɑƌ-ʙᴏᴛ'
   const createSection = (title, commands) => {
     const commandLines = commands.trim().split('\n').map(c => `│ ${c.trim()}`).join('\n')
     return `╭★ ${title} ★╮\n${commandLines}\n╰★────────────★╯`
@@ -91,7 +91,7 @@ function generateMenuText(prefix, userId, groupId, uptime) {
   ]
 
   return `
-╭━ ₭𐌀Ɽ₥𐌀-𐌱𐍉𐍄-𐌱𐍉𐍄━╮
+╭━ ƌɽɛɑƌ-ʙᴏᴛ-𐌱𐍉𐍄━╮
 ┃ 𖤓 *Name:* ${botName}
 ┃ 𖤓 *Runtime:* ${clockString(uptime)}
 ╰━━━━━━━━━━━━━╯

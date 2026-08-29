@@ -142,7 +142,7 @@ let handler = async (m, { conn }) => {
     next: xpToNext,
   });
 
-  const nomeDelBot = conn.user?.name || global.db?.data?.nomedelbot || '₭𐌀Ɽ₥𐌀-𐌱𐍉𐍄';
+  const nomeDelBot = conn.user?.name || global.db?.data?.nomedelbot || 'ƌɽɛɑƌ-ʙᴏᴛ';
 
   await conn.sendMessage(
     groupId,

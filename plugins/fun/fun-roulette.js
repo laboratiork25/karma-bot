@@ -25,7 +25,7 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
         { buttonId: `${usedPrefix}${command} 25 red`, buttonText: { displayText: global.t('rouletteButtonRed25', userId, groupId) }, type: 1 },
         { buttonId: `${usedPrefix}${command} 50 red`, buttonText: { displayText: global.t('rouletteButtonRed50', userId, groupId) }, type: 1 }
       ],
-      footer: '🎰 ₭𐌀Ɽ₥𐌀-𐌱𐍉𐍄 Roulette'
+      footer: '🎰 ƌɽɛɑƌ-ʙᴏᴛ Roulette'
     }, { quoted: m });
   }
 

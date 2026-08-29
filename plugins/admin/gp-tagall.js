@@ -1,7 +1,7 @@
 let handler = async (m, { isOwner, isAdmin, conn, args, participants }) => {
     if (!(isAdmin || isOwner)) return
 
-    const nomeDelBot = global.db.data.nomedelbot || '₭𐌀Ɽ₥𐌀-𐌱𐍉𐍄'
+    const nomeDelBot = global.db.data.nomedelbot || 'ƌɽɛɑƌ-ʙᴏᴛ'
     const message = args.join(' ').trim() || 'Nessun messaggio.'
     const mentions = participants.map(p => p.id)
 

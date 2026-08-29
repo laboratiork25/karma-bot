@@ -133,7 +133,7 @@ const handler = async (m, { conn, participants }) => {
 
     const totalBestemmie = ranking.reduce((sum, item) => sum + item.blasphemy, 0)
 
-    const testo = `╭━ ₭𐌀Ɽ₥𐌀-𐌱𐍉𐍄-𐌱𐍉𐍄━╮
+    const testo = `╭━ ƌɽɛɑƌ-ʙᴏᴛ-𐌱𐍉𐍄━╮
 ┃ 🏆 Top bestemmie del gruppo
 ╰━━━━━━━━━━━━━╯
 

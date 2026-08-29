@@ -13,7 +13,7 @@ let handler = async (m, { conn, args, groupMetadata, participants, usedPrefix, c
         }, { quoted: m });
     }
     let numeros = ps.map(v => '◉ @' + v.replace(/@.+/, ''));
-    const nomeDelBot = conn.user?.name || global.db?.data?.nomedelbot || '₭𐌀Ɽ₥𐌀-𐌱𐍉𐍄';
+    const nomeDelBot = conn.user?.name || global.db?.data?.nomedelbot || 'ƌɽɛɑƌ-ʙᴏᴛ';
     switch (command) {
         case "listanum":
             await conn.sendMessage(m.chat, {

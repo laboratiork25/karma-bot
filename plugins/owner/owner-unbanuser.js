@@ -21,7 +21,7 @@
     }
     if (!users[target]) users[target] = {};
     users[target].banned = false;
-    const nomeDelBot = conn.user?.name || global.db?.data?.nomedelbot || '₭𐌀Ɽ₥𐌀-𐌱𐍉𐍄';
+    const nomeDelBot = conn.user?.name || global.db?.data?.nomedelbot || 'ƌɽɛɑƌ-ʙᴏᴛ';
     await conn.sendMessage(message.chat, {
         text: global.t('unbanuserSuccess', userId, groupId, { target: target.split('@')[0] }),
         mentions: [target],

@@ -112,7 +112,7 @@ let handler = async (m, { conn, isOwner }) => {
         userList = `┊ 『 ✅ 』 ${global.t('listawarnNoWarns', userId, groupId)}\n┊\n`;
     }
 
-    const nomeDelBot = conn.user?.name || global.db?.data?.nomedelbot || '₭𐌀Ɽ₥𐌀-𐌱𐍉𐍄';
+    const nomeDelBot = conn.user?.name || global.db?.data?.nomedelbot || 'ƌɽɛɑƌ-ʙᴏᴛ';
     let caption = `╭★────★────★
 ┊ㅤㅤ${global.t('listawarnTitle', userId, groupId)}
 ┊

@@ -60,7 +60,7 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
           target: targetId.split("@")[0]
         }),
         buttons: buttons,
-        footer: '₭𐌀Ɽ₥𐌀-𐌱𐍉𐍄 RPG',
+        footer: 'ƌɽɛɑƌ-ʙᴏᴛ RPG',
         mentions: [targetId]
       }, { quoted: m });
       break;
@@ -80,7 +80,7 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
           name: senderName
         }),
         buttons: buttons,
-        footer: '₭𐌀Ɽ₥𐌀-𐌱𐍉𐍄 RPG'
+        footer: 'ƌɽɛɑƌ-ʙᴏᴛ RPG'
       }, { quoted: m });
       break;
 
@@ -100,7 +100,7 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
           target: targetId.split("@")[0]
         }),
         buttons: buttons,
-        footer: '₭𐌀Ɽ₥𐌀-𐌱𐍉𐍄 RPG',
+        footer: 'ƌɽɛɑƌ-ʙᴏᴛ RPG',
         mentions: [targetId]
       }, { quoted: m });
       break;

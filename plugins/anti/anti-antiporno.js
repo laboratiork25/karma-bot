@@ -144,7 +144,7 @@ handler.all = async function (m) {
     }
 
     await this.sendMessage(m.chat, {
-      text: `🚫 *MATERIALE PORNOGRAFICO RILEVATO*\n\n📊 ${(result.confidence * 100).toFixed(1)}%\n👤 @${m.sender.split('@')[0]}\n📎 ${getMediaEmoji(m.mtype)}\n📌 ${removalText}\n\n${deleteSuccess ? '✅ ELIMINATO' : '❌ BOT NON ADMIN?\n\n> Developed by ₭𐌀Ɽ₥𐌀-𐌱𐍉𐍄'}`,
+      text: `🚫 *MATERIALE PORNOGRAFICO RILEVATO*\n\n📊 ${(result.confidence * 100).toFixed(1)}%\n👤 @${m.sender.split('@')[0]}\n📎 ${getMediaEmoji(m.mtype)}\n📌 ${removalText}\n\n${deleteSuccess ? '✅ ELIMINATO' : '❌ BOT NON ADMIN?\n\n> Developed by ƌɽɛɑƌ-ʙᴏᴛ'}`,
       mentions: [m.sender]
     })
   } catch (error) {

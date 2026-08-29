@@ -66,7 +66,7 @@ let handler = async (m, { conn, args, usedPrefix, command, DevMode }) => {
                     bot: Aku,
                     user: Kamu,
                     amount: formatNumber(count),
-                    botName: '₭𐌀Ɽ₥𐌀-𐌱𐍉𐍄-Bot',
+                    botName: 'ƌɽɛɑƌ-ʙᴏᴛ-Bot',
                     userName: username
                 }),
                 m
@@ -82,7 +82,7 @@ let handler = async (m, { conn, args, usedPrefix, command, DevMode }) => {
                     bot: Aku,
                     user: Kamu,
                     amount: formatNumber(count * 2),
-                    botName: '₭𐌀Ɽ₥𐌀-𐌱𐍉𐍄-Bot',
+                    botName: 'ƌɽɛɑƌ-ʙᴏᴛ-Bot',
                     userName: username
                 }),
                 m
@@ -98,7 +98,7 @@ let handler = async (m, { conn, args, usedPrefix, command, DevMode }) => {
                     bot: Aku,
                     user: Kamu,
                     amount: formatNumber(count * 1),
-                    botName: '₭𐌀Ɽ₥𐌀-𐌱𐍉𐍄-Bot',
+                    botName: 'ƌɽɛɑƌ-ʙᴏᴛ-Bot',
                     userName: username
                 }),
                 m

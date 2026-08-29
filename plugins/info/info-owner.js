@@ -20,7 +20,7 @@ END:VCARD`
         },
         message: {
             locationMessage: {
-                name: '✦ ₭𐌀Ɽ₥𐌀-𐌱𐍉𐍄 • Owner Panel',
+                name: '✦ ƌɽɛɑƌ-ʙᴏᴛ • Owner Panel',
                 jpegThumbnail: fs.readFileSync('./media/fallback.png')
             }
         }

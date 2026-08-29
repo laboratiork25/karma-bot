@@ -1,5 +1,5 @@
 let handler = async (m, { conn, isOwner, args }) => {
-    const nomeDelBot = conn.user?.name || global.db?.data?.nomedelbot || '₭𐌀Ɽ₥𐌀-𐌱𐍉𐍄';
+    const nomeDelBot = conn.user?.name || global.db?.data?.nomedelbot || 'ƌɽɛɑƌ-ʙᴏᴛ';
     
     if (!isOwner) {
         return conn.sendMessage(m.chat, {

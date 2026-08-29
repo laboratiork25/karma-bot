@@ -14,7 +14,7 @@ const sendForwarded = (conn, chat, text, botName, quoted) => conn.sendMessage(ch
 }, { quoted })
 
 let handler = async (m, { conn, text }) => {
-    const nomeDelBot = conn.user?.name || global.db?.data?.nomedelbot || '₭𐌀Ɽ₥𐌀-𐌱𐍉𐍄'
+    const nomeDelBot = conn.user?.name || global.db?.data?.nomedelbot || 'ƌɽɛɑƌ-ʙᴏᴛ'
 
     try {
         await sendForwarded(conn, m.chat, '⏳ 𝒜𝑔𝑔𝒾𝑜𝓇𝓃𝒶𝓂𝑒𝓃𝓉𝑜 𝒾𝓃 𝒸𝑜𝓇𝓈𝑜, 𝒶𝓉𝓉𝑒𝓃𝒹𝒾 𝓊𝓃 𝓁𝒶𝓉𝓉𝑜.', nomeDelBot, m)

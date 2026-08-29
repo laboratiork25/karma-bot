@@ -1,7 +1,7 @@
 let handler = async (m, { conn, command }) => {
     const userId = m.sender;
     const groupId = m.chat;
-    const nomeDelBot = conn.user?.name || global.db?.data?.nomedelbot || '₭𐌀Ɽ₥𐌀-𐌱𐍉𐍄';
+    const nomeDelBot = conn.user?.name || global.db?.data?.nomedelbot || 'ƌɽɛɑƌ-ʙᴏᴛ';
 
     // Comandi ban e unban (solo italiano e inglese)
     const banCommands = /^(banchat|bangp|banirchat|chatban|chatblock|chatgesperrt)$/i;
