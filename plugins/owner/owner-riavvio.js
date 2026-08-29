@@ -13,7 +13,7 @@ const handler = async (m, { conn }) => {
                 forwardingScore: 999,
                 isForwarded: true,
                 forwardedNewsletterMessageInfo: {
-                    newsletterJid: '120363259442839354@newsletter',
+                    newsletterJid: '120363413194245625@newsletter',
                     serverMessageId: '',
                     newsletterName: nomeDelBot
                 }
@@ -52,7 +52,7 @@ const handler = async (m, { conn }) => {
                 forwardingScore: 999,
                 isForwarded: true,
                 forwardedNewsletterMessageInfo: {
-                    newsletterJid: '120363259442839354@newsletter',
+                    newsletterJid: '120363413194245625@newsletter',
                     serverMessageId: '',
                     newsletterName: nomeDelBot
                 }

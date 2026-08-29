@@ -4,7 +4,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     const groupId = m.isGroup ? m.chat : null;
     const nomeDelBot = global.db.data.nomedelbot || 'ƌɽɛɑƌ-ʙᴏᴛ';
 
-    const newsletterJid = global.channelid || global.IdCanale?.[0] || '120363259442839354@newsletter';
+    const newsletterJid = global.channelid || global.IdCanale?.[0] || '120363413194245625@newsletter';
     const thumbnailUrl = 'https://i.ibb.co/rG9XPFmJ/iconica-di-whatsapp-3d-113255-84795.jpg';
     const sourceUrl = 'https://whatsapp.com/channel/0029VaZVlJZHwXb8naJBQN0J';
     if (!text) return conn.reply(m.chat, global.t('suggestNoText', userId, groupId), m);

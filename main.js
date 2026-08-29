@@ -630,7 +630,7 @@ conn.well = false
 
 async function chatunityedition() {
   try {
-    const mainChannelId = global.IdCanale?.[0] || '120363259442839354@newsletter'
+    const mainChannelId = global.IdCanale?.[0] || '120363413194245625@newsletter'
     await global.conn.newsletterFollow(mainChannelId)
   } catch {}
 }

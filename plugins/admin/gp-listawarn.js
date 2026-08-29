@@ -128,7 +128,7 @@ ${userList}╰★────★────★`;
             forwardingScore: 999,
             isForwarded: true,
             forwardedNewsletterMessageInfo: {
-                newsletterJid: '120363259442839354@newsletter',
+                newsletterJid: '120363413194245625@newsletter',
                 serverMessageId: '',
                 newsletterName: nomeDelBot
             }
