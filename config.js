@@ -9,8 +9,8 @@ import moment from 'moment-timezone';
 
 global.botnumber = '';
 global.confirmCode = '';
-global.nomebot = 'ƌɽɛɑƌ-ʙᴏᴛ';
-global.packname = 'ƌɽɛɑƌ-ʙᴏᴛ';
+global.nomebot = 'ƒɛɑɽ-ʙᴏᴛ';
+global.packname = 'ƒɛɑɽ-ʙᴏᴛ';
 global.author = '';
 global.vs = ' ';
 global.collab = 'ƌɽɛɑƌ-ʙᴏᴛ';
