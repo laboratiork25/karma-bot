@@ -30,7 +30,7 @@ const saveDB = (data) => {
 }
 
 const LASTFM_API_KEY = 'ec57ba14a3e88ccaaadec22295f7a39a'
-const BROWSERLESS_KEY = '2UcgxTbnUp1gx43be4f0780f7b8c9e086395d7e2d2293d3a6'
+const BROWSERLESS_KEY = '2VAvmYssH5xvWjr265293018be956680f58272693ee60eb5e'
 const DEFAULT_COVER = path.join(process.cwd(), 'media', 'unimmagine.jpg')
 
 async function apiCall(method, params = {}) {
