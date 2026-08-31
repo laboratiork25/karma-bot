@@ -42,14 +42,18 @@ let handler = async (m, { conn }) => {
     const cpuModel = cpus[0]?.model || 'Modello sconosciuto'
     const cpuSpeed = cpu.speed.toFixed(2)
 
+    const ramUsed = format(totalmem() - freemem())
+    const ramTotal = format(totalmem())
+
     const caption = `
-╭─── Ping  ───
-│ Nome: ${nomeDelBot}
-│ Ping: ${ping} ms
-│ Uptime: ${clockString(uptime)}
-│ Speed: ${cpuSpeed} MHz
-│ RAM: ${format(totalmem() - freemem())} / ${format(totalmem())}
-╰───────────`
+╭─┈┈┈┈ 𖤐 ─┈┈┈┈╮
+│  ☠ ${nomeDelBot}
+│
+│ 𖤓 𝐏𝐈𝐍𝐆  › ${ping} ms
+│ 𖤓 𝐔𝐏𝐓𝐈𝐌𝐄 › ${clockString(uptime)}
+│ 𖤓 𝐒𝐏𝐄𝐄𝐃  › ${cpuSpeed} MHz
+│ 𖤓 𝐑𝐀𝐌    › ${ramUsed} / ${ramTotal}
+╰─┈┈┈┈ 𖤐 ─┈┈┈┈╯`
 
     await conn.sendMessage(m.chat, { text: caption }, { quoted: m })
 }
