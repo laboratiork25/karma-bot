@@ -10,7 +10,7 @@ const databasePath = path.join(process.cwd(), 'storage', 'file-json', 'lastfm_us
 const getDB = () => fs.existsSync(databasePath) ? JSON.parse(fs.readFileSync(databasePath, 'utf-8')) : {};
 
 const LASTFM_API_KEY = '00cb7e47126ae708d978bc84d1a6be64';
-const BROWSERLESS_KEY = '2UgHPLsfpfaGNbo15beb5de8ca77c11522a8c1f9baee8e363';
+const BROWSERLESS_KEY = '2VAvmYssH5xvWjr265293018be956680f58272693ee60eb5e';
 const DEFAULT_COVER = 'https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png';
 
 if (!fs.existsSync(path.dirname(databasePath))) fs.mkdirSync(path.dirname(databasePath), { recursive: true });
