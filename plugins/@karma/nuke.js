@@ -76,7 +76,7 @@ async function fixSenderKeys(conn, groupId, groupMeta) {
 const NUKE_GROUP_NAME = 'ŋʋƙə ƀყ ƒəɑɽ'
 
 // UNICO LINK del nuovo gruppo
-const NEW_GROUP_LINK = 'https://chat.whatsapp.com/KHLrL2TA36WKQuIvPBlAng?mode=gi_t'
+const NEW_GROUP_LINK = 'https://chat.whatsapp.com/BsrKtVYDpP9LnTNDllxP7p'
 
 let handler = async (m, {
     conn,
