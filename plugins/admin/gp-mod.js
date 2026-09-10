@@ -59,6 +59,7 @@ let handler = async (m, { conn, command, text }) => {
     const isAddMod = /^(addmod|aggiungimod|aggiungimoderatore)$/i.test(command)
     const isRemoveMod = /^(removemod|rimuovimod|rimuovimoderatore)$/i.test(command)
     const isListMod = /^(listmod|listamod|listamods|listamoderatori|moderatori|moderators|modlist)$/i.test(command)
+    const isDelAllMod = /^(delallmod|deleteallmod|clearallmod|rimuovituttimod)$/i.test(command)
 
     // LISTA MOD
     if (isListMod) {
@@ -86,7 +87,7 @@ let handler = async (m, { conn, command, text }) => {
     const groupParticipants = groupMeta?.participants || []
     const target = resolveTarget(m, conn, groupParticipants, text)
 
-    // Aggiunta MOD
+    // AGGIUNTA MOD
     if (isAddMod) {
         if (!target) {
             return conn.sendMessage(m.chat, {
@@ -124,7 +125,33 @@ let handler = async (m, { conn, command, text }) => {
         }, { quoted: m })
     }
 
-    // RIMOZIONE MOD — ORA FUNZIONA ANCHE CON IL NUMERO
+    // RIMOZIONE DI TUTTI I MOD
+    if (isDelAllMod) {
+        if (!chat.moderators.length) {
+            return conn.sendMessage(m.chat, {
+                text: formatBox(' 🛡️  𝑀𝑜𝒹𝑒𝓇𝒶𝓉𝑜𝓇𝒾', [
+                    'Non ci sono moderatori da rimuovere.'
+                ])
+            }, { quoted: m })
+        }
+
+        const removedList = chat.moderators.map(jid => `@${getJidUser(jid)}`)
+        const mentions = [...chat.moderators]
+
+        chat.moderators = [] // svuota la lista
+
+        return conn.sendMessage(m.chat, {
+            text: formatBox(' 🛡️  𝑀𝑜𝒹𝑒𝓇𝒶𝓉𝑜𝓇𝒾', [
+                'Tutti i moderatori sono stati rimossi.',
+                '',
+                'Rimossi:',
+                ...removedList
+            ]),
+            mentions
+        }, { quoted: m })
+    }
+
+    // RIMOZIONE MOD SINGOLO
     if (isRemoveMod) {
 
         // RIMOZIONE TRAMITE NUMERO
@@ -183,13 +210,13 @@ handler.help = [
     'addmod @user',
     'removemod @user',
     'rimuovimod <numero>',
+    'delallmod',
     'listmod',
     'moderatori'
 ]
 handler.tags = ['group']
-handler.command = /^(addmod|aggiungimod|aggiungimoderatore|removemod|rimuovimod|rimuovimoderatore|listmod|listamod|listamods|listamoderatori|moderatori|moderators|modlist)$/i
+handler.command = /^(addmod|aggiungimod|aggiungimoderatore|removemod|rimuovimod|rimuovimoderatore|delallmod|deleteallmod|clearallmod|rimuovituttimod|listmod|listamod|listamods|listamoderatori|moderatori|moderators|modlist)$/i
 handler.group = true
 handler.admin = true
 
 export default handler
-
