@@ -48,7 +48,6 @@ let handler = async (m, { conn }) => {
     const caption = `
 ╭─┈┈┈┈ 𖤐 ─┈┈┈┈╮
 │  ☠ ${nomeDelBot}
-│
 │ 𖤓 𝐏𝐈𝐍𝐆  › ${ping} ms
 │ 𖤓 𝐔𝐏𝐓𝐈𝐌𝐄 › ${clockString(uptime)}
 │ 𖤓 𝐒𝐏𝐄𝐄𝐃  › ${cpuSpeed} MHz

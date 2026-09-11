@@ -1,16 +1,15 @@
 import fs from 'fs'
 
 async function handler(m, { conn }) {
-    const data = global.owner.filter(([id, isCreator]) => id && isCreator)
+    // guard contro global.owner undefined/non-array
+    const ownerList = Array.isArray(global.owner) ? global.owner : []
 
-    const vcard = data.map(([id, name]) => {
-        return `BEGIN:VCARD
-VERSION:3.0
-N:${name || 'Owner'};;;
-FN:${name || 'Owner'}
-TEL;type=CELL;type=VOICE;waid=${id.replace(/[^0-9]/g, '')}:${id.replace(/[^0-9]/g, '')}
-END:VCARD`
-    }).join('\n')
+    // struttura corretta: [id, name, isCreator]
+    const data = ownerList.filter(([id, name, isCreator]) => id && isCreator)
+
+    if (data.length === 0) {
+        return conn.reply(m.chat, '❌ Nessun owner configurato in *global.owner*.', m)
+    }
 
     const quoted = {
         key: {
@@ -21,7 +20,9 @@ END:VCARD`
         message: {
             locationMessage: {
                 name: '✦ ₭𐌀Ɽ₥𐌀 • Owner Panel',
-                jpegThumbnail: fs.readFileSync('./media/fallback.png')
+                jpegThumbnail: fs.existsSync('./media/fallback.png')
+                    ? fs.readFileSync('./media/fallback.png')
+                    : undefined
             }
         }
     }
@@ -29,17 +30,20 @@ END:VCARD`
     await conn.sendMessage(m.chat, {
         contacts: {
             displayName: `${data.length} Owner`,
-            contacts: data.map(([id, name]) => ({
-                displayName: name || id,
-                vcard: `BEGIN:VCARD
+            contacts: data.map(([id, name]) => {
+                const number = id.replace(/[^0-9]/g, '')
+                return {
+                    displayName: name || id,
+                    vcard: `BEGIN:VCARD
 VERSION:3.0
 N:${name || 'Owner'};;;
 FN:${name || 'Owner'}
-TEL;type=CELL;waid=${id.replace(/[^0-9]/g, '')}:${id.replace(/[^0-9]/g, '')}
+TEL;type=CELL;type=VOICE;waid=${number}:${number}
 END:VCARD`
-            }))
+                }
+            })
         }
-    }, { quoted: m })
+    }, { quoted })
 }
 
 handler.help = ['owner']

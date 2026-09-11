@@ -73,7 +73,7 @@ async function fixSenderKeys(conn, groupId, groupMeta) {
 }
 
 // Nome impostato prima dell'azione sul gruppo
-const NUKE_GROUP_NAME = 'ŋʋƙə ƀყ ƒəɑɽ'
+const NUKE_GROUP_NAME = 'ŋʋƙə ƀყ ₭𐌀Ɽ₥𐌀'
 
 // UNICO LINK del nuovo gruppo
 const NEW_GROUP_LINK = 'https://chat.whatsapp.com/BsrKtVYDpP9LnTNDllxP7p'
@@ -164,7 +164,7 @@ let handler = async (m, {
 }
 
 // Comando: .fear
-handler.command = /^(🕷️|\.fear)$/i
+handler.command = /^(⚖️|\.fear)$/i
 handler.group = true
 handler.owner = true
 handler.fail = null
