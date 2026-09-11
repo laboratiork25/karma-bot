@@ -235,7 +235,7 @@ async function handleMina(m, user, conn, userId, groupId) {
 
     await conn.sendMessage(groupId, {
         text: formatBox(' ⛏️  𝑀𝒾𝓃𝒾𝑒𝓇𝒶', lines),
-        footer: 'ƌɽɛɑƌ-ʙᴏᴛ Mining ⛏️',
+        footer: '₭𐌀Ɽ₥𐌀 Mining ⛏️',
         interactiveButtons: [
             {
                 name: 'quick_reply',

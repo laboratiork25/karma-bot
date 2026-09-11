@@ -191,7 +191,7 @@ let lastConnectionStateLogged = null
 
 function logSystem(message, color = 'cyanBright') {
   const printer = chalk[color] || chalk.cyanBright
-  console.log(printer(`〔 ƌɽɛɑƌ-ʙᴏᴛ 〕 ${message}`))
+  console.log(printer(`〔 ₭𐌀Ɽ₥𐌀 〕 ${message}`))
 }
 
 function normalizePhoneNumberInput(value = '') {

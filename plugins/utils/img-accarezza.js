@@ -97,8 +97,8 @@ let handler = async (m, { conn, usedPrefix, command }) => {
     const stiker = await sticker(
       rawBuffer,
       false,
-      global.packname || 'ƌɽɛɑƌ-ʙᴏᴛ',
-      global.author || 'ƌɽɛɑƌ-ʙᴏᴛ'
+      global.packname || '₭𐌀Ɽ₥𐌀',
+      global.author || '₭𐌀Ɽ₥𐌀'
     )
 
     await conn.sendMessage(m.chat, {

@@ -235,7 +235,7 @@ async function handleCaccia(m, user, conn, userId, groupId) {
 
     await conn.sendMessage(groupId, {
         text: formatBox(' 🏹  𝒞𝒶𝒸𝒸𝒾𝒶', lines),
-        footer: 'ƌɽɛɑƌ-ʙᴏᴛ Hunting 🏹',
+        footer: '₭𐌀Ɽ₥𐌀 Hunting 🏹',
         interactiveButtons: [
             {
                 name: 'quick_reply',

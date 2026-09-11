@@ -9,19 +9,19 @@ import moment from 'moment-timezone';
 
 global.botnumber = '';
 global.confirmCode = '';
-global.nomebot = 'ƒɛɑɽ-ʙᴏᴛ';
-global.packname = 'ƒɛɑɽ-ʙᴏᴛ';
+global.nomebot = '₭𐌀Ɽ₥𐌀';
+global.packname = '₭𐌀Ɽ₥𐌀';
 global.author = '';
 global.vs = ' ';
-global.collab = 'ƌɽɛɑƌ-ʙᴏᴛ';
+global.collab = '₭𐌀Ɽ₥𐌀';
 global.wm = global.nomebot;
 global.wait = 'ⓘ 𝐂𝐚𝐫𝐢𝐜𝐚𝐦𝐞𝐧𝐭𝐨 ...';
 
 
 global.owner = [
   ['9779828891521', 'gnegne', true], //re dei larp
-  ['‪393717542151‬', 'vale', true]
-  ['‪‪447404287288‬‬', 'lacoste', true]
+  ['393717542151', 'vale', true]
+  ['447404287288', 'lacoste', true]
 
 ];
 

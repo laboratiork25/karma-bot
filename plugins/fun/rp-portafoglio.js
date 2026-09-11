@@ -70,7 +70,7 @@ let handler = async (m, { conn, usedPrefix }) => {
     m.chat,
     {
       text: message,
-      footer: '`ƌɽɛɑƌ-ʙᴏᴛ Economy`',
+      footer: '`₭𐌀Ɽ₥𐌀 Economy`',
       buttons,
       mentions: [who],
       contextInfo: {

@@ -26,7 +26,7 @@ let handler = async (message, { conn, text }) => {
     if (!users[target]) users[target] = {};
     users[target].banned = true;
 
-    const nomeDelBot = conn.user?.name || global.db?.data?.nomedelbot || 'ƌɽɛɑƌ-ʙᴏᴛ';
+    const nomeDelBot = conn.user?.name || global.db?.data?.nomedelbot || '₭𐌀Ɽ₥𐌀';
 
     await conn.sendMessage(message.chat, {
         text: global.t('banuserSuccess', userId, groupId, { target: target.split('@')[0] }),

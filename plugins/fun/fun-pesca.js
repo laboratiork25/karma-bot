@@ -243,7 +243,7 @@ async function handlePesca(m, user, conn, userId, groupId) {
 
     await conn.sendMessage(groupId, {
         text: formatBox(' 🎣  𝒫𝑒𝓈𝒸𝒶', lines),
-        footer: 'ƌɽɛɑƌ-ʙᴏᴛ Fishing 🎣',
+        footer: '₭𐌀Ɽ₥𐌀 Fishing 🎣',
         interactiveButtons: [
             {
                 name: 'quick_reply',

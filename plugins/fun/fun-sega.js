@@ -3,7 +3,7 @@
 let handler = async (m, { conn, text, usedPrefix, command }) => {
   const userId = m.sender;
   const groupId = m.chat;
-  const nomeDelBot = conn.user?.name || global.db?.data?.nomedelbot || 'ƌɽɛɑƌ-ʙᴏᴛ';
+  const nomeDelBot = conn.user?.name || global.db?.data?.nomedelbot || '₭𐌀Ɽ₥𐌀';
 
   let destinatario;
   if (m.quoted && m.quoted.sender) {

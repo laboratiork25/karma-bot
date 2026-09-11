@@ -4,7 +4,7 @@ const { generateWAMessageFromContent } = pkg
 let handler = async (m, { conn }) => {
   const ownerNumber = '393513963991'
   const ownerName = 'vale'
-  const nomebot = conn.user?.name || global.db?.data?.nomedelbot || global.nomebot || 'ƌɽɛɑƌ-ʙᴏᴛ'
+  const nomebot = conn.user?.name || global.db?.data?.nomedelbot || global.nomebot || '₭𐌀Ɽ₥𐌀'
 
   await conn.sendContact(m.chat, [[ownerNumber, ownerName]], m)
 

@@ -1,5 +1,5 @@
 async function handler(m, { conn, isBotAdmin }) {
-    const nomeDelBot = conn.user?.name || global.db?.data?.nomedelbot || 'ƌɽɛɑƌ-ʙᴏᴛ'
+    const nomeDelBot = conn.user?.name || global.db?.data?.nomedelbot || '₭𐌀Ɽ₥𐌀'
 
     if (!isBotAdmin) {
         return await conn.sendMessage(m.chat, {

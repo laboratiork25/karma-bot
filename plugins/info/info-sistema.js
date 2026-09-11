@@ -24,7 +24,7 @@ const getDiskSpace = () => {
 const handler = async (m, { conn }) => {
     const userId = m.sender;
     const groupId = m.isGroup ? m.chat : null;
-    const nomeDelBot = global.db.data.nomedelbot || 'ƌɽɛɑƌ-ʙᴏᴛ';
+    const nomeDelBot = global.db.data.nomedelbot || '₭𐌀Ɽ₥𐌀';
 
     const totalMem = os.totalmem();
     const freeMem = os.freemem();
@@ -88,7 +88,7 @@ ${diskSpaceLabel}
 ╰﹕₊˚ ★ ⁺˳ꕤ₊⁺・꒱` : diskErrorLabel}
 
 ╰♡꒷ ๑ ⋆˚₊⋆──ʚ˚ɞ──⋆˚₊⋆ ๑ ⪩
-୧・© ƌɽɛɑƌ-ʙᴏᴛ Bot
+୧・© ₭𐌀Ɽ₥𐌀 Bot
 ╰♡꒷ ๑ ⋆˚₊⋆──ʚ˚ɞ──⋆˚₊⋆ ๑ ⪩
 `;
 
